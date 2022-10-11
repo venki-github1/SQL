@@ -10,6 +10,9 @@ EX:- drop table table_name
 --> ALTER is used to alter the column name
 EX:- alter table table_name rename column old_column_name to new_column_name
 
+EX:- alter table emp add column address --> To add new column to existing table
+EX:- alter table emp drop column address  --> To delete the existing column
+
 DML COMMANDS:
 -------------
 1) insert  2)delete  3)update
@@ -41,6 +44,93 @@ RENAME:
 EX:- rename old_table_name to new_table_name
 
 ----------------------------------------------------------------------CLASS-3 END---------------------------------------------------------------------------
+
+create table table_name(id number(5),name varchar2(40),age number(3))
+
+-->In the above you created table with 3 parameters so you need to give 3 values while inserting the recoeds if you dont know the value keep null
+
+EX:- insert into table_name values(001,'venky',null)  (or)
+EX:- insert into table_name(id,name) values(001,'venky')-->in this case remaining column is null.
+
+AND:
+----
+select * from emp where age >25 and id=1
+select * from emp where job='manager' and salary>10000 and deptno=10
+
+OR:
+---
+select * from emp where age > 25 or id=1
+select * from emp where job='manager' or salary>10000 or deptno=10
+
+select * from emp where (job='manager' and salary>10000) or deptno=10
+
+IS:
+---
+--> null is not compared with = symbol
+
+select * from emp where address is null
+
+IN:
+--
+select * from emp where sal = 1200 or sal = 1500 or sal = 1600  is same as below
+select * from emp where salary in (1200,1500,1600)
+
+--> IN equals to multiplr or
+
+NOT IN:
+-------
+select * from emp where salary not in (1200,1500,1600)
+
+BETWEEN:
+--------
+--> can't be used for characters, only for numbers and dates
+
+select * from emp where salary between 2000 and 5000
+
+NOT BETWEEN:
+------------
+
+select * from emp where salary not between 2000 and 5000
+
+LIKE:
+----
+select * from emp where name like '%a%'  (% is 0 or more characters)
+select * from emp where name like 'a%' --> name start with a.
+select * from emp where name like '%a%a' --> name having 2 a's.
+select * from emp where name like '_a' --> second letter must be a. and before a only one letter(because before only one _ is there)
+
+NOT LIKE:
+--------
+select * from emp where name not like '%a%'
+
+-------------------------------------------------------------------CLASS-4 END------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
