@@ -4,9 +4,11 @@ DDL COMMANDS:
 
 EX:- create table table_name(id number(5),name varchar2(40),age number(3))
 
+--> DROP is used to delete the table completely.
 EX:- drop table table_name
 
-EX:- alter table table_name rename column old_address to new_address
+--> ALTER is used to alter the column name
+EX:- alter table table_name rename column old_column_name to new_column_name
 
 DML COMMANDS:
 -------------
@@ -39,7 +41,6 @@ RENAME:
 EX:- rename old_table_name to new_table_name
 
 ----------------------------------------------------------------------CLASS-3 END---------------------------------------------------------------------------
-
 
 
 
