@@ -1,0 +1,65 @@
+DDL COMMANDS:
+-------------
+1) create  2) alter  3) drop  4) truncate
+
+EX:- create table table_name(id number(5),name varchar2(40),age number(3))
+
+EX:- drop table table_name
+
+EX:- alter table table_name rename column old_address to new_address
+
+DML COMMANDS:
+-------------
+1) insert  2)delete  3)update
+
+--> INSERT is used to store the new records.
+EX:- insert into table_name values(001,'vijay',25)
+
+-->UPDATE is used to update the existing data. we can also update more than one column also.
+EX:- update table_name set age=44 where name=vijay
+EX:- update table_name set age=44, id=006 where name=vijay
+
+-->DELETE is used to delete the records from table.
+EX:- delete from table_name where age=44
+
+
+DQL COMMANDS:
+-------------
+1) select
+
+EX:- select * from table_name
+
+TCL COMMANDS:
+-------------
+1) commit 2) rollback 3) savepoint
+
+
+RENAME:
+------
+EX:- rename old_table_name to new_table_name
+
+----------------------------------------------------------------------CLASS-3 END---------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Q.difference b/n delete and drop?
+
