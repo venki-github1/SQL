@@ -104,9 +104,79 @@ NOT LIKE:
 select * from emp where name not like '%a%'
 
 -------------------------------------------------------------------CLASS-4 END------------------------------------------------------------------------------
+select sysdate from dual -->To get today's date
+select sysdate + 5 from dual  --> It adds five days from the sysdate()  (No change in the time)
+select sysdate - 5 from dual  --> It gives 5 days back date to the sysdate (No change in the time)
+select sysdate - 1/24 from dual --> It go back by one hour.
+select sysdate - 5/24 from dual --> It go back by five hours.
+select sysdate - 5/24/60 from dual --> It go back by five minutes.
 
 
 
+ex:- select * from emp where joining_date > sysdate - 5 ->To get the employees joined five days before
+
+Date functions:
+--------------
+
+1)TO_CHAR  is a conversion function from date to char.
+
+assume today date is 02-NOV-2022 wednesday.
+
+select to_char(sysdate,'DAY') from dual --> o/p- WEDNESDAY
+select to_char(sysdate,'MONTH') from dual --> o/p- NOVEMBER
+select to_char(sysdate,'MON') from dual --> o/p- NOV  (it gives first three characters of month)
+select to_char(sysdate,'DD') from dual --> o/p- 02
+select to_char(sysdate,'MM') from dual --> o/p- 11
+select to_char(sysdate,'DD/MM') from dual --> o/p- 02/11
+select to_char(sysdate,'DD/MM/YYYY') from dual --> o/p- 02/11/2022
+select to_char(sysdate,'HH24') from dual --> o/p- 13  (gives the hour in 24hour format)
+select to_char(sysdate,'HH12 AM') from dual --> o/p- 01 PM
+select to_char(sysdate,'HH12:MI AM') from dual --> o/p- 01:25 PM
+select to_char(sysdate,'HH12:MI:SS AM') from dual --> o/p - 01:25:36 PM
+select to_char(sysdate,'D') from dual --> o/p- 4   (it gives day in the week) (sun=1, mon=2, tue=3, wed=4, thu=5, fri=6, sat=7)
+select to_char(sysdate, 'DDD') from dual  --> o/p- 305 year lo enno rojulo unnamo check cheyataniki
+select to_char(sysdate, 'Q') from dual --> o/p - 4 (gives quarter of the year)
+select to_char(sysdate, 'cc') from dual --> o/p - 21 (gives century of the year)
+select to_char(sysdate,'YYYYSP') from dual  --> o/p - two thousand and twenty two  (sp=spelling)
+
+
+Q.which employee joined in monday?
+select * from emp where to_char(joining_date,'D') = 2  (OR)
+select * from emp where to_char(joining_date,'DY') = 'MON'
+
+Q. which employees joined in may?
+select * from emp where to_char(joining_date,'MM') = 5  (jan=1, feb=2, march=3, ..........dec=12)
+
+Q. which employees joined in first 6 months?
+select * from emp where to_char(joining_date,'Q') in (1,2)   (OR) select * from emp where to_char(joining_date,'MM') in (1,2,3,4,5,6)
+
+Q. which employess are joined in 1999 may?
+select * from emp where to_char(joining_date,'MM') = 5 and to_char(joining_date,'YYYY') = 1999
+
+Q. which employees joined in wednesday?
+select * from emp where to_char(joining_date,'D') = 4  (OR)  select * from emp where to_char(joining_date,'DY') = 'WED'
+
+2) LAST_DAY  --> It gives last day of the month
+
+select last_day(sysdate) from dual --> o/p - 11/30/2022 9:27:41 AM
+
+Q. what is the first day of this month?
+select last_day(sysdate - 30) from dual --> it gives last month last day  add +1 to this to give this month first day.
+select last_day(sysdate) +1 from dual
+select to_char(last_day(sysdate - 30) +1,'DAY') from dual --> o/p - MONDAY
+
+3) NEXT_DAY 
+select next_day(sysdate,''wed) from dual  (it gives the next wednesday is when)
+select next_day(next_day(sysdate,'wed'),'wed') from dual  (next of next wed it gives) 
+
+Q.when is the next month second saturday?
+select next_day(next_day(last_day(sysdate),'sat'),'sat') from dual  (OR) select next_day(last_day(sysdate),'sat') + 7 from dual
+
+
+
+
+
+-------------------------------------------------------------------CLASS-5 END------------------------------------------------------------------------------
 
 
 
