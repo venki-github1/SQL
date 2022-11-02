@@ -177,13 +177,48 @@ select next_day(next_day(last_day(sysdate),'sat'),'sat') from dual  (OR) select 
 
 
 -------------------------------------------------------------------CLASS-5 END------------------------------------------------------------------------------
+3) TO_DATE  --> converts string to date
+ex:
+create table xyz(a date)
+insert into xyz values ('10/nov/2022')
+insert into xyz values ('10/11/2022') --> gives error
+insert into xyz values (to_date('10/11/2022', 'dd/mm/yyyy')-->Now it works
 
+Q. what is the day of 15-aug-1947?
+select to_char(to_date('15/08/1947','dd/mm/yyyy'),'DAY') from dual  --> o/p - friday
 
+4) ADD_MONTHS  -->
 
+select add_months(sysdate,12) from dual --> we are adding 12 months to sysdate 10/11/2022 9:19:20 AM  now o/p - 10/11/2023 9:19:20 AM
 
+select add_months(sysdate,-12) from dual --> we are deleting 12 months to sysdate 10/11/2022 9:19:20 AM  now o/p - 10/11/2021 9:19:20 AM
 
+Q. all the employees who are joined from the last one year?
+select * from emp where joinining_date between add_months(sysdate,-12) and sysdate
 
+5) MONTHS_BETWEEN  -->gives the difference between two dates in months
 
+select months_between (sysdate,joining_date), ename from emp
+o/p - 12.141721176821983  smith
+
+select months_between (sysdate,joining_date)/12, ename from emp  -->(now o/p in years)
+o/p - 1.0812245643397359 smith
+
+select trunc(months_between (sysdate,joining_date)/12), ename from emp
+o/p - 1  smith
+
+Q. which employees have greater than 10 years of experience?
+select * from emp where trunc(months_between (sysdate,joining_date)/12) > 10
+
+TRUNC:
+------
+select sysdate from dual
+o/p- 10/13/2020 9:35:23 AM
+
+select trunc(sysdate) from dual -->trunc neglets hours, minutes and seconds(it will goes to the day beginning)
+o/p - 10/13/2020 12:00:00 AM
+
+-------------------------------------------------------------------CLASS-6 END------------------------------------------------------------------------------
 
 
 
